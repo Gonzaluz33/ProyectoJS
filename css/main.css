@@ -1,0 +1,40 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.contGen{
+    padding:  30px 0;
+    width: 100%;
+    background-color: rgb(194, 194, 194);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contGrid{
+    background-color: rgb(202, 199, 111);
+    display: flex;
+    align-items: center;
+    height: auto;
+    width: 50%;
+    justify-content: center;
+}
+.imgCont{
+    width: auto;
+    height: 300px;
+    overflow: hidden;
+}
+.imgCont img{
+    height: 300px;
+    width: 100%;
+}
+.contGrid.producto{
+    display: flex;
+    justify-content: center;
+  
+    height: auto;
+    align-items: center;
+    overflow: hidden;
+}
+
