@@ -1,50 +1,71 @@
-//Modularizacion TAD Biblioteca
-
-//book object
-function Libro(datos_libro){
-    this.id = datos_libro.id;
-    this.nombre = datos_libro.nombre;
-    this.autor = datos_libro.autor;
-    this.precio = datos_libro.precio;
-}
-
-// Constructoras ----------------
-function crearLibro(nombre,precio,autor){
-    let nombre2 = nombre.toLowerCase();
-    let id = nombre2.replace(/\s+/g, '');
-    const nuevo_libro = new Libro({id:id,nombre:nombre,precio:precio,autor:autor});
-    return nuevo_libro;
-}
-//----------------------------------
-
-// Operaciones de modificación ---------
-function insLibro(biblioteca,libro){
-        biblioteca.push(libro);
-}
-//----------------------------------
-
-// Operaciones de consulta ---------------
-function buscarPrecioLibro(biblioteca,nombre){
-    let nombre3 = nombre.toLowerCase();
-    nombre3 = nombre3.replace(/\s+/g, '');
-    let libro = biblioteca.find(libro => libro.id === nombre3);
-    return libro;
- }
-function calcularPrecio(precio, cuotas, envio) {
-    parseInt(precio);
-    var interes;
-    if (cuotas >= 6) {
-        interes = 0.05;
-    } else interes = 0;
-    var ship_price;
-    if (envio.toUpperCase() == 'DOMICILIO') {
-        ship_price = 120;
-    } else {
-        ship_price = 0;
+class Libro{
+    constructor(id,nomId,nombre,autor,precio,stock,categoria){
+        this.id = id;
+        this.nomId = nomId;
+        this.nombre = nombre;
+        this.autor = autor;
+        this.precio = precio;
+        this.stock = stock;
+        this.categoria = categoria;
     }
-    precio = parseInt(precio);
-    interes *= precio;
-    var precio_final = (precio + interes + ship_price);
-    return precio_final = parseInt(precio_final);
 }
-//------------------------------------
+
+const biblioteca = [];
+const categorias = [];
+
+
+function agregarLibro(biblioteca,nombre,autor,precio,categoria){
+    let esta = biblioteca.filter(libro => libro.nombre === nombre);
+    if(esta.length > 0){
+        let libro_aux = biblioteca.find(libro => libro.nombre === nombre);
+        libro_aux.stock++;
+    }else{
+        let id = 1;
+        if(biblioteca.length > 0){
+            id = biblioteca[biblioteca.length-1].id+1;
+        }
+        let nomId = nombre.toLowerCase();
+        nomId = nomId.replace(/\s+/g, '');
+        let libro = new Libro(id,nomId,nombre,autor,precio,1,categoria);
+        biblioteca.push(libro);
+        let estaCategoria = categorias.filter((cat)=> cat === categoria) 
+        if(estaCategoria.length == 0)
+        categorias.push(categoria);
+    }
+}
+
+function quitarLibro(biblioteca,nombre){
+    let esta = biblioteca.some((libro) => libro.nombre === nombre || libro.nomId === nombre);
+    if(esta){
+        let libro_aux = biblioteca.find((libro) => libro.nombre === nombre || libro.nomId === nombre);
+        if(libro_aux.stock > 1){
+            libro_aux.stock--;
+        }else{
+            let index = biblioteca.indexOf(libro_aux);
+            biblioteca.splice(index,1);
+        }
+    }
+}
+
+function cambiarPrecioLibro(biblioteca,nombre,nuevoPrecio){
+    let esta = biblioteca.some((libro) => libro.nombre === nombre || libro.nomId === nombre);
+    if(esta){
+        let libro_encontrado = biblioteca.find((libro) => libro.nombre === nombre || libro.nomId === nombre);
+        libro_encontrado.precio = nuevoPrecio;
+    }
+}
+function cambiarStockLibro(biblioteca,nombre,nuevoStock){
+    let esta = biblioteca.some((libro) => libro.nombre === nombre || libro.nomId === nombre);
+    if(esta){
+        let libro_encontrado = biblioteca.find((libro) => libro.nombre === nombre || libro.nomId === nombre);
+        libro_encontrado.stock = nuevoStock;
+    }
+}
+
+
+function buscarLibro(biblioteca,nombre){
+    let nombre_aux = nombre.toLowerCase();
+    nombre_aux = nombre_aux.replace(/\s+/g, '');
+    let libro = biblioteca.find((libro)=> libro.nomId.indexOf(nombre_aux) !== -1);
+    return libro;
+}

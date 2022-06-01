@@ -1,40 +1,44 @@
 *{
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-
-.contGen{
-    padding:  30px 0;
-    width: 100%;
-    background-color: rgb(194, 194, 194);
+h1{
+    text-align: center;
+    padding: 1rem;
+    color: black;
+}
+#titleContainer{
+    background-color: rgb(244, 213, 183);
+}
+.containerMain{
     display: flex;
-    align-items: center;
-    justify-content: center;
 }
-.contGrid{
-    background-color: rgb(202, 199, 111);
-    display: flex;
-    align-items: center;
-    height: auto;
-    width: 50%;
-    justify-content: center;
-}
-.imgCont{
-    width: auto;
-    height: 300px;
-    overflow: hidden;
-}
-.imgCont img{
-    height: 300px;
-    width: 100%;
-}
-.contGrid.producto{
-    display: flex;
-    justify-content: center;
+#containerAgregar{
+    background-color: rgb(212, 208, 204);
+    border: solid 2px black;
   
-    height: auto;
-    align-items: center;
-    overflow: hidden;
 }
+#tituloAgregar{
+    text-align: center;
+}
+#containerBorrar{
+    background-color: rgb(212, 208, 204);
+    border: solid 2px black;
 
+}
+#tituloQuitar{
+    text-align: center;
+
+}
+#tituloBuscar{
+    text-align: center;
+}
+#containerBuscar{
+    background-color: rgb(212, 208, 204);
+    border: solid 2px black;
+
+}
+#containerMostrar{
+    background-color: rgb(212, 208, 204);
+    border: solid 2px black;
+}

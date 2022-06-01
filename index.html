@@ -1,38 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>quintaEntrega</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../repo_principal/css/main.css">
-    
-</head>
-
-<body>
-    <div class="contGen">
-        <div class="contGrid">
-            <div class="producto">
-                <div class="imgCont">
-                    <img id="imageSRC" src="" alt="image of book">
-                </div>
-                <div class="contenido">
-                    <p id="bookName" >Nombre</p>
-                    <p id="bookPrice" >Precio</p>
-                    <button type="button" class="btnAddCart">
-                        Añadir al carrito
-                    </button>
-                </div>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Biblioteca</title>
+  </head>
+  <body>
+    <div id="titleContainer">
+        <H1>Manejo de Stock libros</H1>
+    </div>
+    <div class="containerMain p-3 w-100 d-flex flex-wrap">
+            <div class="w-25 p-2" id="containerAgregar">
+                <h3 id="tituloAgregar" class="p-3">Agregar Libro</h3>
+                <p>Nombre</p>
+                <input class="imputAgregar my-2" type="text" name="nombre" id="imputNombre-agregar">
+                <p>Autor</p>
+                <input class="imputAgregar my-2" type="text" name="autor" id="imputAutor-agregar">
+                <p>Precio</p>
+                <input class="imputAgregar my-2" type="text" name="precio" id="imputPrecio-agregar">
+                <p>Categoria</p>
+                <input class="imputAgregar my-2" type="text" name="categoria" id="imputCategoria-agregar">
+                <br>
+                <button id="submitAgregar" type="button" class="btn btn-primary">Agregar</button>
+            </div> 
+            <div class="w-25 p-2 " id="containerBorrar">
+                <h3 id="tituloQuitar" class="p-3">Quitar Libro</h3>
+                <p>Nombre</p>
+                <input class="imputBorrar my-2" type="text" name="nombre" id="imputNombre-borrar">
+                <br>
+                <button id="submitBorrar" type="button" class="btn btn-primary">Quitar</button>
             </div>
-            
-        </div>
-        
+            <div class="w-25 p-2" id="containerBuscar">
+                <h3 id="tituloBuscar" class="p-3">Buscar Libro</h3>
+                <p>Buscar</p>
+                <input class="imputBuscar my-2" type="text" name="nombre" id="imputNombre-buscar">
+                <button id="submitBuscar" type="button" class="btn btn-primary">Buscar</button>
+            </div>
+            <div class="w-25 p-2" id="containerMostrar">
+                
+            </div>
     </div>
 
-
+    <!--JavaScript -->
     <script src="../repo_principal/js/biblioteca.js"></script>
-    <script src="../repo_principal/js/quintaEntrega.js"></script>
-</body>
-
+    <script src="../repo_principal/js/mainJs.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
 </html>
