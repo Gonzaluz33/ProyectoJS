@@ -10,8 +10,12 @@ class Libro{
     }
 }
 
-const biblioteca = [];
+let biblioteca = [];
+if(localStorage.getItem("biblioteca")){
+    biblioteca = JSON.parse(localStorage.getItem("biblioteca"));
+}
 const categorias = [];
+
 
 
 function agregarLibro(biblioteca,nombre,autor,precio,categoria){
@@ -44,6 +48,7 @@ function quitarLibro(biblioteca,nombre){
             let index = biblioteca.indexOf(libro_aux);
             biblioteca.splice(index,1);
         }
+        console.log(libro_aux);
     }
 }
 
