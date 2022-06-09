@@ -1,21 +1,23 @@
-class Libro{
-    constructor(id,nomId,nombre,autor,precio,stock,categoria){
-        this.id = id;
-        this.nomId = nomId;
-        this.nombre = nombre;
-        this.autor = autor;
-        this.precio = precio;
-        this.stock = stock;
-        this.categoria = categoria;
-    }
-}
 
 let biblioteca = [];
 if(localStorage.getItem("biblioteca")){
     biblioteca = JSON.parse(localStorage.getItem("biblioteca"));
 }
-const categorias = [];
-
+let categorias = [];
+let UsuariosAdmin = [
+    {
+    username: "admin",
+    password: "admin"
+    },
+    {
+    username: "admin",
+    password: "1234"
+    },
+    {
+    username: "1",
+    password: "1"
+    },
+];
 
 
 function agregarLibro(biblioteca,nombre,autor,precio,categoria){
@@ -73,4 +75,24 @@ function buscarLibro(biblioteca,nombre){
     nombre_aux = nombre_aux.replace(/\s+/g, '');
     let libro = biblioteca.find((libro)=> libro.nomId.indexOf(nombre_aux) !== -1);
     return libro;
+}
+
+function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+  
+function closeForm() {
+document.getElementById("myForm").style.display = "none";
+}
+
+function mostrarActual(){
+    let container = document.getElementById("containerProducts");
+    container.innerHTML ="";
+    for(let i=0; i<biblioteca.length;i++){
+        let libro = biblioteca[i];
+        let casilla = document.createElement("div");
+        casilla.innerHTML = `<div class="card m-3" style="width: 18rem;"><img src="./img/book_image.png" class="card-img-top" alt="..."><div class="card-body"><h5 class="card-title">${libro.nombre}</h5></div><ul class="list-group list-group-flush"><li class="list-group-item">$ ${libro.precio}</li><li class="list-group-item">Autor: ${libro.autor}</li><li class="list-group-item">Categoría: ${libro.categoria}</li></ul><div class="card-body"><button class="button-41" role="button">Agregar al Carrito</button></div></div>`;
+        container.appendChild(casilla);
+    }
+    
 }
