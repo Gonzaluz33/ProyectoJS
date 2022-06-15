@@ -11,10 +11,25 @@ btnLoginAdmn.onclick = ()=>{
     let aprobado = UsuariosAdmin.find(usuario => (usuario.username === usr) && (usuario.password === psw));
     aprobado && mostrarcontainerAdmSection();
         function mostrarcontainerAdmSection(){
+            Toastify({
+                text:"Login Satisfactorio",
+                duration: 3000,
+                gravity:'bottom',
+                position:'left',
+                style:{
+                    background:'green'
+                },
+            }).showToast();
             document.getElementById("containerAdmSection").style.display = "block";
             closeForm();
         }
-    !aprobado && (document.getElementById("containerAdmSection").style.display = "none");
+    !aprobado && Toastify({
+        text:"Intente Nuevamente",
+        duration: 3000,
+        gravity:'bottom',
+        position:'left',
+        style: {background:'red'},
+    }).showToast();;
 };
 
 let btnAgregar = document.getElementById("submitAgregar");
