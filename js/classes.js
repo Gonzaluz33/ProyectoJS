@@ -1,5 +1,5 @@
 class Libro{
-    constructor(id,nomId,nombre,autor,precio,stock,categoria){
+    constructor(id,nomId,nombre,autor,precio,stock,categoria,img){
         this.id = id;
         this.nomId = nomId;
         this.nombre = nombre;
@@ -7,6 +7,7 @@ class Libro{
         this.precio = precio;
         this.stock = stock;
         this.categoria = categoria;
+        this.img = img;
     }
 }
 class Usuario{

@@ -6,7 +6,6 @@ a {
 body {
   overflow-x: hidden; 
 
-    background-color: #f2eae3
 }
 
 .my-float {
@@ -535,7 +534,7 @@ footer {
 }
 
 #containerAdmSection{
-  display: none;
+  display: block;
 }
 #containerProducts{
   width: auto;

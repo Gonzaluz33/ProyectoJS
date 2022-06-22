@@ -19,6 +19,23 @@ let UsuariosAdmin = [
     },
 ];
 
+function cargarImagen(search){
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=` + search)
+    .then(response => response.json())
+    .then((result) => {
+        let aux = auxCargarImagen(result);
+        return aux;
+    })
+    
+}
+function auxCargarImagen(result){
+ let array = result.items;
+ let libro = array[0];
+ let libro2 = libro.volumeInfo.imageLinks.thumbnail;
+ return libro2;
+}
+
+
 
 function agregarLibro(biblioteca,nombre,autor,precio,categoria){
     let esta = biblioteca.filter(libro => libro.nombre === nombre);
@@ -32,7 +49,9 @@ function agregarLibro(biblioteca,nombre,autor,precio,categoria){
         }
         let nomId = nombre.toLowerCase();
         nomId = nomId.replace(/\s+/g, '');
-        let libro = new Libro(id,nomId,nombre,autor,precio,1,categoria);
+        //obtener imagen de la api y asociar la mas relevante con el nombre del libro
+        let image = cargarImagen(nombre);
+        let libro = new Libro(id,nomId,nombre,autor,precio,1,categoria,image);
         biblioteca.push(libro);
         let estaCategoria = categorias.filter((cat)=> cat === categoria) 
         if(estaCategoria.length == 0)
@@ -77,16 +96,8 @@ function buscarLibro(biblioteca,nombre){
     return libro;
 }
 
-function openForm() {
-    document.getElementById("myForm").style.display = "block";
-  }
-  
-function closeForm() {
-document.getElementById("myForm").style.display = "none";
-}
-
-function mostrarActual(){
-    let container = document.getElementById("containerProducts");
+function mostrarActualHeader(){
+    let container = document.getElementById("containerActualHeader");
     container.innerHTML ="";
     for(let i=0; i<biblioteca.length;i++){
         let libro = biblioteca[i];
